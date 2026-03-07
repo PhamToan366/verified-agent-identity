@@ -4,7 +4,7 @@ A decentralized identity management toolkit for AI agents using iden3 protocol o
 
 ## Overview
 
-This skill enables AI agents to create, manage, link, prove and verify ownership of decentralized identities (DIDs) using cryptographic signatures.
+This skill enables AI agents to create, manage, link, prove and verify ownership of decentralized identities (did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk) using cryptographic signatures.
 
 ## Installation
 
@@ -51,7 +51,7 @@ This skill enables AI agents to create, manage, link, prove and verify ownership
 3. Generate a verification link to connect your human identity to the agent:
 
    ```bash
-   node scripts/manualLinkHumanToAgent.js --challenge '{"name": "Agent Name", "description": "Short description of the agent"}'
+   node scripts/manualLinkHumanToAgent.js --challenge '{"name": "phamthanhtoandt2023@gphmail.com", "description": "Short description of the agent"}'
    ```
 
    This prints the verification URL to the console. Open it in your browser to complete the identity linking process.
