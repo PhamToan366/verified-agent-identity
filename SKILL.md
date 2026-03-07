@@ -214,7 +214,7 @@ Agent: exec node scripts/linkHumanToAgent.js --to <sender> --challenge <challeng
 ```text
 Agent: "Please provide your DID to start verification."
 User: "My DID is <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>"
-Agent: exec node scripts/generateChallenge.js --did <user_did>
+Agent: exec node scripts/generateChallenge.js --did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>
 Agent: "Please sign this challenge: 789012"
 User: <9,913>
 Agent: exec node scripts/verifySignature.js --token <9,913> --did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>
