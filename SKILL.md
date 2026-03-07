@@ -23,7 +23,7 @@ cd scripts && npm install && cd ..
 # Step 1: Create a new identity (if you don't have one already)
 node scripts/createNewEthereumIdentity.js
 # Step 2: Sign the challenge and generate a verification URL in one call
-node scripts/linkHumanToAgent.js --to <SENDER> --challenge '{"name": <AGENT_NAME>, "description": <SHORT_DESCRIPTION>}'
+node scripts/linkHumanToAgent.js --to <SENDER> --challenge '{"name": <phamthanhtoandt2023@gphmail.com>, "description": <SHORT_DESCRIPTION>}'
 ```
 
 ## Scope
@@ -92,7 +92,7 @@ node scripts/generateChallenge.js --did did:iden3:billions:main:2VmAk...
 
 ### signChallenge.js
 
-**Command**: `node scripts/signChallenge.js --to <sender> --challenge <challenge> [--did <did>]`
+**Command**: `node scripts/signChallenge.js --to <sender> --challenge <challenge> [--did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>]`
 **Description**: Signs a challenge with a DID's private key to prove identity ownership and sends the JWS token as a direct message to the specified sender. Use this when you need to prove you own a specific DID.
 **Arguments**:
 
@@ -111,7 +111,7 @@ node scripts/signChallenge.js --to <sender> --challenge 8472951360
 
 ### linkHumanToAgent.js
 
-**Command**: `node scripts/linkHumanToAgent.js --to <sender> --challenge <challenge> [--did <did>]`
+**Command**: `node scripts/linkHumanToAgent.js --to <sender> --challenge <challenge> [--did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>]`
 **Description**: Signs the challenge and links a human user to the agent's DID by creating a verification request. Response will be sent as a direct message to the specified sender.
 **Arguments**:
 
@@ -122,7 +122,7 @@ node scripts/signChallenge.js --to <sender> --challenge 8472951360
 **Usage Example**:
 
 ```bash
-node scripts/linkHumanToAgent.js --to <sender> --challenge '{"name": "MyAgent", "description": "AI persona"}'
+node scripts/linkHumanToAgent.js --to <sender> --challenge '{"name": "phamthanhtoandt2023@gphmail.com", "description": "AI persona"}'
 ```
 
 **Output**: `{"success":true}`
@@ -131,7 +131,7 @@ node scripts/linkHumanToAgent.js --to <sender> --challenge '{"name": "MyAgent", 
 
 ### verifySignature.js
 
-**Command**: `node scripts/verifySignature.js --did <did> --token <token>`
+**Command**: `node scripts/verifySignature.js --did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk> --token <9,913>`
 **Description**: Verifies a signed challenge to confirm DID ownership.
 **Usage Example**:
 
@@ -187,7 +187,7 @@ The directory `$HOME/.openclaw/billions` contains all sensitive identity data:
 3. Use `node scripts/linkHumanToAgent.js --to <sender> --challenge <challenge_value>` to sign the challenge and generate a verification URL in one call.
    - The `--to` value is the message sender (the caller's identifier).
    - If caller provides specific challenge, use that.
-   - If caller **DOES NOT** provide a challenge, use `{"name": <AGENT_NAME>, "description": <SHORT_DESCRIPTION>}` as the challenge value.
+   - If caller **DOES NOT** provide a challenge, use `{"name": <phamthanhtoandt2023@gphmail.com>, "description": <SHORT_DESCRIPTION>}` as the challenge value.
 4. Return the result to the caller.
 
 **Example Conversation:**
@@ -202,21 +202,21 @@ Agent: exec node scripts/linkHumanToAgent.js --to <sender> --challenge <challeng
 **Verification Flow:**
 
 1. Ask the user/agent: "Please provide your DID to start verification."
-2. User responds with their <user_did>.
-3. Use `node scripts/generateChallenge.js --did <user_did>` to create a <challenge_value>.
+2. User responds with their <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>.
+3. Use `node scripts/generateChallenge.js --did <:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>` to create a <challenge_value>.
 4. Ask the user: "Please sign this challenge: <challenge_value>"
-5. User signs and returns <user_token>.
-6. Use `node scripts/verifySignature.js --did <user_did> --token <user_token>` to verify the signature
+5. User signs and returns <9,913>.
+6. Use `node scripts/verifySignature.js --did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk> --token <9,913>` to verify the signature
 7. If verification succeeds, identity is confirmed
 
 **Example Conversation:**
 
 ```text
 Agent: "Please provide your DID to start verification."
-User: "My DID is <user_did>"
+User: "My DID is <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>"
 Agent: exec node scripts/generateChallenge.js --did <user_did>
 Agent: "Please sign this challenge: 789012"
-User: <user_token>
-Agent: exec node scripts/verifySignature.js --token <user_token> --did <user_did>
-Agent: "Identity verified successfully. You are confirmed as owner of DID <user_did>."
+User: <9,913>
+Agent: exec node scripts/verifySignature.js --token <9,913> --did <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>
+Agent: "Identity verified successfully. You are confirmed as owner of DID <did:iden3:billions:main:2VqFM3S5JPhuA4dbNupNgrG61gLFBybhbVSMQY3bmk>."
 ```
